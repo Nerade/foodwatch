@@ -1,0 +1,23 @@
+{% extends 'base_container.html' %}
+
+{% load bootstrap %}
+
+{% block page %}
+<div class="col-lg-6">
+	<div class="panel-default">
+		<div class="panel-heading">
+			<h3>{{mode}}{% if mode == 'Create' or mode == 'Upload' %} a new{% endif %} {% block modelname %}{% endblock %} {% if mode != 'Create' and mode != 'Upload' %}#{{id}}{% endif %}</h3>
+		</div>
+		<div class="panel-body">
+			{% block formtag %}
+			{% endblock %}
+					{% csrf_token %}
+					{{form|bootstrap}}
+				<input class="btn btn-primary" type="submit" value="{{mode}}" />
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block aside %}{% endblock %}

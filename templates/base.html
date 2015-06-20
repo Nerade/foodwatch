@@ -1,0 +1,48 @@
+{% extends 'bootstrap.html' %}
+
+{# Load the tag library #}
+{% load bootstrap3 %}
+
+{% load staticfiles %}
+
+{% load django_bootstrap_breadcrumbs %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% load url from future %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{% block bootstrap3_title %}
+{% block title %}
+{% endblock %}
+{% endblock %}
+
+{% block breadcrumbs %}
+	{% clear_breadcrumbs %}
+	{% breadcrumb "Home" "/" %}
+{% endblock %}
+
+{% block bootstrap3_content %}
+
+<div class="container">
+	{% for message in messages %}
+
+	<div class="alert alert-{{ message.tags }}">
+		{{ message }}
+	</div>
+	{% endfor %}
+</div>
+{% block container %}
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
