@@ -1,0 +1,31 @@
+{% extends "base_container.html" %}
+
+{% block page %}
+<h1>Detail!!</h1>
+	
+			<div class='col-lg-4 col-md-6 col-sm-12' style='padding-right: 20px;'>
+				<div class='row'>
+					<div class='panel panel-info'>
+						<div class='panel-heading'>
+							<span class='pull-right'>Lagerort: {{item.get_storage_display}}</span>
+							<h1 class='panel-title' data-toggle="tooltip" data-placement="left" title="{{item.ean_code}}">{{item.item_name}}<small>({{item.category}})</small></h1>
+						</div>
+						<div class='panel-body'>
+							<img class='img-rounded pull-left item-thumbnail' src={{item.image_thumbnail.url}}>
+							<p>{{ item.description }}</p>
+							<ul class='list-inline'>
+								<li><a class='btn btn-default'>{{item.premium_cost}}&euro;</a></li>
+								<li><a class='btn btn-success'>{{item.member_cost}}&euro;</a></li>
+								<li><a class='btn btn-default'>{{item.guest_cost}}&euro;</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+	
+	<script type="application/javascript">
+		$(function () {
+	  		$('[data-toggle="tooltip"]').tooltip()
+		})
+	</script>	
+{% endblock %}
